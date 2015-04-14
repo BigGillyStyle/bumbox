@@ -50,7 +50,7 @@ test("the component shows the play button by default", function() {
   });
 });
 
-test("the component toggles betwen the pause and play button when it's clicked", function() {
+test("the component toggles between the pause and play button when it's clicked", function() {
   expect(4);
   visit('album/1');
 
