@@ -44,6 +44,10 @@ export default Ember.Service.extend({
     this.set('isPlaying', false);
   },
 
+  resume: function() {
+    this.get('audioElement').play();
+  },
+
   timeDidUpdate: function() {
     "use strict";
 

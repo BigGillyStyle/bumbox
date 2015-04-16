@@ -8,5 +8,15 @@ export default Ember.Component.extend({
 
   player: inject.service(),
 
-  song: computed.readOnly('player.song')
+  song: computed.readOnly('player.song'),
+
+  actions: {
+    pause: function() {
+      this.get('player').pause();
+    },
+
+    resume: function() {
+      this.get('player').resume();
+    }
+  }
 });

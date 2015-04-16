@@ -7,6 +7,7 @@
     </p>
 
     <div class="now-playing-player">
+      {{audio-control isPlaying=player.isPlaying pause='pause' play='resume'}}
       <p class="duration">
         {{format-duration player.currentTime}}
       </p>

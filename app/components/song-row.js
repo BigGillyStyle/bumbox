@@ -5,13 +5,15 @@ export default Ember.Component.extend({
   tagName: 'tr',
   classNameBindings: ['isCurrentSong'],
 
-  player: inject.service(),
   song: null,
+
+  player: inject.service(),
 
   actions: {
     play: function() {
       this.get('player').play(this.get('song'));
     },
+
     pause: function() {
       this.get('player').pause();
     }
