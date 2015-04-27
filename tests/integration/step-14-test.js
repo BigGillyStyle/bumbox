@@ -3,7 +3,7 @@
   allows users to toggle between the current and remaining time of a song in
   the now-playing footer component.
 
-  * The currentTime is the ellapsed time of the song. Your player service
+  * The currentTime is the elapsed time of the song. Your player service
     already exposes currentTime as a property.
 
   * The remainingTime is the duration of the song minus the currentTime
@@ -15,7 +15,7 @@
 import { test, moduleForComponent } from 'ember-qunit';
 import Ember from 'ember';
 
-moduleForComponent('now-playing', "Step 14: Toggle ellapsed/current time", {
+moduleForComponent('now-playing', "Step 14: Toggle elapsed/current time", {
   needs: [
     'helper:format-duration',
     'service:player',
@@ -39,8 +39,20 @@ test("when a song is loaded and the player is not playing, the component shows t
 });
 
 test("Toggling current and remaining time", function() {
+  "use strict";
 
-  // TODO: IMPLEMENT THIS TEST
+  var player = Ember.Object.extend().create();
+  var component = this.subject({player: player});
 
+  Ember.run(function() {
+    player.set('song', {duration: 120});
+    player.set('currentTime', 30);
+  });
+
+  var durationElement = this.$().find('.duration');
+
+  equal(durationElement.text().trim(), '0:30', "The component should show the current time");
+  durationElement.click();
+  equal(durationElement.text().trim(), '1:30', "The component should show the remaining time");
 });
 

@@ -8,8 +8,12 @@
 
     <div class="now-playing-player">
       {{audio-control isPlaying=player.isPlaying pause='pause' play='resume'}}
-      <p class="duration">
-        {{format-duration player.currentTime}}
+      <p {{action 'toggleTimeDisplay'}} class="duration">
+        {{#if showCurrentTime}}
+          {{format-duration player.currentTime}}
+        {{else}}
+          {{format-duration remainingTime}}
+        {{/if}}
       </p>
     </div>
   </div>

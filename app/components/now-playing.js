@@ -5,10 +5,15 @@ var inject = Ember.inject,
 export default Ember.Component.extend({
   tagName: 'footer',
   classNames: ['now-playing'],
+  showCurrentTime: true,
 
   player: inject.service(),
 
   song: computed.readOnly('player.song'),
+  remainingTime: function() {
+    "use strict";
+    return this.get('song.duration') - this.get('player.currentTime');
+  }.property('song.duration', 'player.currentTime'),
 
   actions: {
     pause: function() {
@@ -17,6 +22,10 @@ export default Ember.Component.extend({
 
     resume: function() {
       this.get('player').resume();
+    },
+    toggleTimeDisplay: function() {
+      "use strict";
+      this.toggleProperty('showCurrentTime');
     }
   }
 });
